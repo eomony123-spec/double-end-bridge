@@ -1,5 +1,5 @@
 const AUTH_KEY = "chotensai_auth_ok";
-const FIXED_PASSWORD = "Chotensai-2026-Bridge-Only-Use-Long-Secret";
+const FIXED_PASSWORD = "Chotensai-R7-Bridge-2026-Private-Only-8391";
 
 const passwordInputEl = document.getElementById("passwordInput");
 const unlockBtn = document.getElementById("unlockBtn");
