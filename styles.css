@@ -1,0 +1,245 @@
+:root {
+  --bg: #030707;
+  --bg2: #04120b;
+  --panel: rgba(0, 16, 9, 0.72);
+  --line: rgba(51, 255, 145, 0.32);
+  --line-strong: rgba(51, 255, 145, 0.7);
+  --text: #98ffca;
+  --text-dim: #5dc391;
+  --accent: #00d26a;
+  --accent-2: #66ffc2;
+  --danger: #f04f4f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: "Consolas", "Courier New", monospace;
+  background:
+    linear-gradient(transparent 95%, rgba(0, 255, 136, 0.08) 100%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 255, 136, 0.05) 100%),
+    radial-gradient(circle at 25% 0%, #0f2d1f 0%, transparent 35%),
+    radial-gradient(circle at 90% 100%, #091f16 0%, transparent 30%),
+    linear-gradient(180deg, var(--bg2), var(--bg));
+  background-size: 100% 4px, 4px 100%, auto, auto, auto;
+}
+
+.container {
+  width: min(980px, 94vw);
+  margin: 1.3rem auto 2.5rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hero,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: inset 0 0 24px rgba(0, 255, 119, 0.06), 0 0 20px rgba(0, 255, 119, 0.08);
+}
+
+.hero {
+  padding: 1.1rem 1.2rem;
+  display: grid;
+  gap: 0.8rem;
+  justify-items: start;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.3vw, 1.7rem);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(63, 255, 158, 0.55);
+}
+
+.start-btn {
+  min-width: 140px;
+}
+
+.panel {
+  padding: 0.95rem 1rem;
+}
+
+.panel h2 {
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.06em;
+  font-size: 0.96rem;
+  color: var(--accent-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.7rem 1rem;
+  align-items: center;
+}
+
+label,
+.toggle-row span {
+  color: var(--text-dim);
+}
+
+input[type="number"] {
+  width: 120px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--text);
+  font-family: inherit;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+.toggle-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actions {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button {
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 0.5rem 0.78rem;
+  background: rgba(0, 34, 18, 0.95);
+  color: var(--accent-2);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+button:hover {
+  background: rgba(0, 49, 27, 0.95);
+  box-shadow: 0 0 10px rgba(61, 255, 164, 0.25);
+}
+
+button.danger {
+  border-color: rgba(240, 79, 79, 0.62);
+  color: #ff8d8d;
+  background: rgba(52, 5, 5, 0.85);
+}
+
+.error {
+  min-height: 1.1rem;
+  margin: 0.45rem 0 0;
+  color: #ff7e7e;
+}
+
+.status {
+  min-height: 1.1rem;
+  margin: 0.45rem 0 0;
+  color: var(--accent-2);
+}
+
+.list,
+.history-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.62rem 0.72rem;
+  background: rgba(0, 10, 6, 0.7);
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nums {
+  margin: 0.5rem 0;
+  font-size: 1.04rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.36rem;
+}
+
+.badge {
+  border-radius: 999px;
+  border: 1px solid rgba(91, 255, 173, 0.34);
+  background: rgba(2, 38, 21, 0.9);
+  color: #8effc8;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.history-meta {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+.hidden {
+  display: none;
+}
+
+body.intro-mode .container {
+  min-height: 100vh;
+  margin: 0 auto;
+  align-content: center;
+}
+
+body.intro-mode .hero {
+  justify-items: center;
+  text-align: center;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.auth-container {
+  min-height: 100vh;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.auth-panel {
+  width: min(440px, 94vw);
+  margin: 0 auto;
+}
+
+.auth-title {
+  margin: 0 0 0.4rem;
+  color: var(--accent-2);
+  font-size: 1.15rem;
+}
+
+.auth-note {
+  margin: 0 0 0.8rem;
+  color: var(--text-dim);
+}
+
+#passwordInput {
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
