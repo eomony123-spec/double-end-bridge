@@ -168,12 +168,30 @@ function generateOneSet(doubleBridgeRequired, maxRetry) {
 }
 
 function pickMidsBridge(m, lm, hm) {
+  const plans = [];
+  if (lm.length > 0) plans.push({ primary: lm, opposite: hm });
+  if (hm.length > 0) plans.push({ primary: hm, opposite: lm });
+  shuffle(plans);
+
+  for (const plan of plans) {
+    const primaryOnly = difference(plan.primary, plan.opposite);
+    if (primaryOnly.length === 0) continue;
+
+    const oppositeSet = new Set(plan.opposite);
+    const safePool = MID_RANGE.filter((n) => !oppositeSet.has(n));
+    if (safePool.length < m) continue;
+
+    const selected = new Set([pickOne(primaryOnly)]);
+    fillSetRandomly(selected, safePool, m);
+    if (selected.size !== m) continue;
+
+    return [...selected].sort((a, b) => a - b);
+  }
+
   const bm = unique([...lm, ...hm]);
   if (bm.length === 0) return null;
-
   const selected = new Set([pickOne(bm)]);
   fillSetRandomly(selected, MID_RANGE, m);
-
   if (selected.size !== m) return null;
   return [...selected].sort((a, b) => a - b);
 }
@@ -398,4 +416,9 @@ function hasIntersection(a, b) {
 function intersection(a, b) {
   const setB = new Set(b);
   return unique(a.filter((n) => setB.has(n)));
+}
+
+function difference(a, b) {
+  const setB = new Set(b);
+  return unique(a.filter((n) => !setB.has(n)));
 }
